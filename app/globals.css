@@ -33,11 +33,22 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary: var(--secondary);
   --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+
+  --color-primary: #256af4;
+  --color-cyberPurple: #bc13fe;
+  --color-cyberPink: #ff00c1;
+  --color-darkBg: #050505;
+  --color-glassBg: rgba(255, 255, 255, 0.03);
+  --color-glassBorder: rgba(255, 255, 255, 0.1);
+
+  --shadow-neon-blue: 0 0 15px rgba(37, 106, 244, 0.4);
+  --shadow-neon-purple: 0 0 15px rgba(188, 19, 254, 0.4);
+
+  --radius-custom: 8px;
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -120,10 +131,61 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-[#050505] text-[#ffffff];
+    overflow-x: hidden;
   }
+
   html {
     @apply font-sans;
+  }
+}
+
+@layer utilities {
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .glassmorphism {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .neon-border-blue:hover {
+    border-color: #256af4;
+    box-shadow: 0 0 15px rgba(37, 106, 244, 0.5);
+  }
+
+  .text-gradient {
+    background: linear-gradient(to right, #256af4, #bc13fe, #ff00c1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .glow-blob {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -1;
+    opacity: 0.15;
   }
 }
