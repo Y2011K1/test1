@@ -1,4 +1,14 @@
+"use client";
+
 export default function Footer() {
+  const handleSubscribe = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get("email");
+    console.log("Subscribing email:", email);
+    // TODO: implement API logic here
+  };
+
   return (
     <footer className="bg-black border-t border-white/5 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -41,9 +51,10 @@ export default function Footer() {
           <div className="col-span-1">
             <h4 className="font-bold mb-6">Stay Updated</h4>
             <p className="text-sm text-gray-500 mb-6">Get the latest course updates and tech news.</p>
-            <form className="flex flex-col gap-3" onSubmit={(e) => e.preventDefault()}>
-              <input className="bg-white/5 border border-white/10 rounded-custom px-4 py-3 text-sm focus:border-primary focus:ring-0 outline-none transition-all" placeholder="Email Address" type="email"/>
-              <button className="bg-primary hover:bg-blue-600 text-white font-bold py-3 rounded-custom text-sm shadow-neon-blue transition-all">Subscribe</button>
+            <form className="flex flex-col gap-3" onSubmit={handleSubscribe}>
+              <label htmlFor="newsletter-email" className="sr-only">Email address</label>
+              <input id="newsletter-email" name="email" className="bg-white/5 border border-white/10 rounded-custom px-4 py-3 text-sm focus:border-primary focus:ring-0 outline-none transition-all" placeholder="Email Address" type="email" required/>
+              <button type="submit" className="bg-primary hover:bg-blue-600 text-white font-bold py-3 rounded-custom text-sm shadow-neon-blue transition-all">Subscribe</button>
             </form>
           </div>
         </div>

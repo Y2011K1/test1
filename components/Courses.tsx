@@ -55,11 +55,13 @@ export default async function Courses() {
                       <span className="text-xl font-bold">
                         {course.tier === 'free' ? 'Free' : course.tier === 'pro' ? '$49.99' : '$99.99'}
                       </span>
-                      <Link href={`/courses/${course.slug?.current || course._id}`}>
-                        <button className="bg-primary/20 text-primary hover:bg-primary hover:text-white px-4 py-2 rounded-custom text-sm font-bold transition-all shadow-neon-blue">
-                          Enroll
-                        </button>
-                      </Link>
+                      <Link 
+                      href={`/courses/${course.slug?.current || course._id}`}
+                      className="bg-primary/20 text-primary hover:bg-primary hover:text-white px-4 py-2 rounded-custom text-sm font-bold transition-all shadow-neon-blue inline-flex items-center justify-center"
+                      role="button"
+                    >
+                      Enroll
+                    </Link>
                     </div>
                   </div>
                 </div>

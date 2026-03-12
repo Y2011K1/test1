@@ -4,6 +4,11 @@ import { useState } from "react";
 export default function Pricing() {
   const [isYearly, setIsYearly] = useState(false);
 
+  // TODO: implement logic for pricing actions
+  const handleChoosePlan = () => console.log('Choose Plan logic');
+  const handleGetPro = () => console.log('Get Pro logic');
+  const handleContactSales = () => console.log('Contact Sales logic');
+
   return (
     <section className="py-24 relative" id="pricing">
       <div className="glow-blob bg-cyberPurple top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10"></div>
@@ -48,7 +53,7 @@ export default function Pricing() {
                 Mobile App Access
               </li>
             </ul>
-            <button className="w-full py-3 rounded-custom border border-white/20 font-bold hover:bg-white/5 transition-all">Choose Plan</button>
+            <button onClick={handleChoosePlan} disabled aria-disabled="true" className="w-full py-3 rounded-custom border border-white/20 font-bold hover:bg-white/5 transition-all opacity-50 cursor-not-allowed">Choose Plan</button>
           </div>
           {/* Tier 2 (Highlighted) */}
           <div className="glassmorphism p-8 rounded-custom flex flex-col h-full border-2 border-primary shadow-neon-blue relative transform md:-translate-y-4">
@@ -77,7 +82,7 @@ export default function Pricing() {
                 Weekly Mentorship Live
               </li>
             </ul>
-            <button className="w-full py-3 rounded-custom bg-primary font-bold shadow-neon-blue hover:scale-105 transition-all">Get Pro</button>
+            <button onClick={handleGetPro} disabled aria-disabled="true" className="w-full py-3 rounded-custom bg-primary font-bold shadow-neon-blue transition-all opacity-50 cursor-not-allowed">Get Pro</button>
           </div>
           {/* Tier 3 */}
           <div className="glassmorphism p-8 rounded-custom flex flex-col h-full border border-white/10 hover:border-white/20 transition-all">
@@ -105,7 +110,7 @@ export default function Pricing() {
                 Custom Branding
               </li>
             </ul>
-            <button className="w-full py-3 rounded-custom border border-white/20 font-bold hover:bg-white/5 transition-all">Contact Sales</button>
+            <button onClick={handleContactSales} disabled aria-disabled="true" className="w-full py-3 rounded-custom border border-white/20 font-bold hover:bg-white/5 transition-all opacity-50 cursor-not-allowed">Contact Sales</button>
           </div>
         </div>
       </div>

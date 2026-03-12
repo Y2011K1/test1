@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Hero() {
   return (
     <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
@@ -13,12 +15,16 @@ export default function Hero() {
             The next-generation LMS for creators, developers, and visionaries. Learn with AI-driven paths and join a community of 500k+ students worldwide.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-            <button className="w-full sm:w-auto px-8 py-4 bg-primary rounded-custom font-bold text-white shadow-neon-blue hover:scale-105 transition-transform">
-              Start Learning
-            </button>
-            <button className="w-full sm:w-auto px-8 py-4 border border-white/20 rounded-custom font-bold text-white hover:bg-white/5 transition-colors">
-              Explore Courses
-            </button>
+            <Link href="/courses">
+              <button className="w-full sm:w-auto px-8 py-4 bg-primary rounded-custom font-bold text-white shadow-neon-blue hover:scale-105 transition-transform">
+                Start Learning
+              </button>
+            </Link>
+            <Link href="/courses">
+              <button className="w-full sm:w-auto px-8 py-4 border border-white/20 rounded-custom font-bold text-white hover:bg-white/5 transition-colors">
+                Explore Courses
+              </button>
+            </Link>
           </div>
         </div>
         <div className="flex-1 w-full max-w-2xl relative">
