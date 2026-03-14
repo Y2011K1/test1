@@ -7,13 +7,12 @@ import Footer  from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background text-foreground font-sans mt-32 selection:bg-primary/30">
+    <main className="min-h-screen bg-background animate-fade-in text-foreground font-sans selection:bg-primary/30">
 
       <Hero />
       <Features />
       <Courses />
       <HowItWorks />
-      <Pricing />
       <Footer />
     </main>
   );

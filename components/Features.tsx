@@ -26,10 +26,10 @@ export default function Features() {
           {/* Card 3 */}
           <div className="glassmorphism p-8 rounded-custom neon-border-blue transition-all group">
             <div className="w-12 h-12 bg-cyberPink/10 rounded-custom flex items-center justify-center mb-6 text-cyberPink group-hover:scale-110 transition-transform">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
             </div>
-            <h3 className="text-xl font-bold mb-3">Certificates</h3>
-            <p className="text-gray-400 text-sm leading-relaxed">Earn blockchain-verified certificates that stand out to industry recruiters.</p>
+            <h3 className="text-xl font-bold mb-3">Global Access</h3>
+            <p className="text-gray-400 text-sm leading-relaxed">Learn from anywhere in the world with our globally distributed edge infrastructure.</p>
           </div>
           {/* Card 4 */}
           <div className="glassmorphism p-8 rounded-custom neon-border-blue transition-all group">

@@ -1,13 +1,19 @@
 "use client";
 import { useState } from "react";
+import { SignInButton, useUser } from "@clerk/nextjs";
+import Link from "next/link";
 
 export default function Pricing() {
   const [isYearly, setIsYearly] = useState(false);
+  const { isSignedIn, user } = useUser();
 
-  // TODO: implement logic for pricing actions
-  const handleChoosePlan = () => console.log('Choose Plan logic');
-  const handleGetPro = () => console.log('Get Pro logic');
-  const handleContactSales = () => console.log('Contact Sales logic');
+  const metadata = user?.unsafeMetadata || {};
+  const currentPlan = metadata.plan as string | undefined;
+  const status = metadata.status as string | undefined;
+  const isActive = status === 'active';
+
+  const proDescription = process.env.NEXT_PUBLIC_PRO_DESCRIPTION || "Accelerate your growth";
+  const ultraDescription = process.env.NEXT_PUBLIC_ULTRA_DESCRIPTION || "Scale your entire team";
 
   return (
     <section className="py-24 relative" id="pricing">
@@ -33,84 +39,83 @@ export default function Pricing() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Tier 1 */}
           <div className="glassmorphism p-8 rounded-custom flex flex-col h-full border border-white/10 hover:border-white/20 transition-all">
-            <h3 className="text-xl font-bold mb-2">Basic</h3>
+            <h3 className="text-xl font-bold mb-2">Free</h3>
             <p className="text-gray-500 text-sm mb-6">Start your journey</p>
             <div className="mb-8">
-              <span className="text-4xl font-extrabold">{isYearly ? '$290' : '$29'}</span>
-              <span className="text-gray-500">{isYearly ? '/yr' : '/mo'}</span>
+              <span className="text-4xl font-extrabold">Free</span>
+              <span className="text-gray-500"> forever</span>
             </div>
-            <ul className="space-y-4 mb-10 flex-grow">
-              <li className="flex items-center gap-3 text-sm text-gray-300">
-                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-                Access to 50+ courses
-              </li>
-              <li className="flex items-center gap-3 text-sm text-gray-300">
-                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-                Community Forum Access
-              </li>
-              <li className="flex items-center gap-3 text-sm text-gray-300">
-                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-                Mobile App Access
-              </li>
-            </ul>
-            <button onClick={handleChoosePlan} disabled aria-disabled="true" className="w-full py-3 rounded-custom border border-white/20 font-bold hover:bg-white/5 transition-all opacity-50 cursor-not-allowed">Choose Plan</button>
+            <div className="mt-auto pt-8">
+              {currentPlan === 'free' || !currentPlan ? (
+                <div className="text-center text-primary font-bold flex items-center justify-center gap-2 text-sm">
+                  <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                  Current Plan
+                </div>
+              ) : (
+                <div className="h-[46px]"></div> 
+              )}
+            </div>
           </div>
           {/* Tier 2 (Highlighted) */}
           <div className="glassmorphism p-8 rounded-custom flex flex-col h-full border-2 border-primary shadow-neon-blue relative transform md:-translate-y-4">
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-white">Most Popular</div>
             <h3 className="text-xl font-bold mb-2">Pro</h3>
-            <p className="text-gray-500 text-sm mb-6">Accelerate your growth</p>
-            <div className="mb-8">
-              <span className="text-4xl font-extrabold">{isYearly ? '$790' : '$79'}</span>
+            <p className="text-gray-500 text-sm mb-6">{proDescription}</p>
+            <div className="mb-2">
+              <span className="text-4xl font-extrabold">{isYearly ? '$162' : '$18.99'}</span>
               <span className="text-gray-500">{isYearly ? '/yr' : '/mo'}</span>
             </div>
-            <ul className="space-y-4 mb-10 flex-grow">
-              <li className="flex items-center gap-3 text-sm text-gray-300">
-                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-                All 500+ Courses
-              </li>
-              <li className="flex items-center gap-3 text-sm text-gray-300">
-                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-                AI Learning Assistant
-              </li>
-              <li className="flex items-center gap-3 text-sm text-gray-300">
-                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-                Verified Certificates
-              </li>
-              <li className="flex items-center gap-3 text-sm text-gray-300">
-                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-                Weekly Mentorship Live
-              </li>
-            </ul>
-            <button onClick={handleGetPro} disabled aria-disabled="true" className="w-full py-3 rounded-custom bg-primary font-bold shadow-neon-blue transition-all opacity-50 cursor-not-allowed">Get Pro</button>
+            <div className="mb-6"></div>
+            {isActive && currentPlan === 'pro' ? (
+              <div className="mt-auto">
+                <div className="text-center text-primary font-bold mb-2 flex items-center justify-center gap-2 text-sm">
+                  <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                  Current Plan
+                </div>
+              </div>
+            ) : isSignedIn ? (
+              <Link href={`/checkout?planId=cplan_3ArQDgJIKa7sIYWHzzdbO8QBVIX&period=${isYearly ? 'year' : 'month'}`}>
+                <div className="w-full py-3 rounded-custom bg-primary text-center cursor-pointer font-bold shadow-neon-blue transition-all mt-auto hover:scale-105">
+                  {currentPlan ? 'Switch to Pro' : 'Subscribe'}
+                </div>
+              </Link>
+            ) : (
+              <SignInButton mode="modal" fallbackRedirectUrl="/#pricing">
+                <div className="w-full py-3 rounded-custom bg-primary text-center cursor-pointer font-bold shadow-neon-blue transition-all mt-auto hover:scale-105">
+                  Sign in to Subscribe
+                </div>
+              </SignInButton>
+            )}
           </div>
           {/* Tier 3 */}
           <div className="glassmorphism p-8 rounded-custom flex flex-col h-full border border-white/10 hover:border-white/20 transition-all">
-            <h3 className="text-xl font-bold mb-2">Enterprise</h3>
-            <p className="text-gray-500 text-sm mb-6">Scale your entire team</p>
-            <div className="mb-8">
-              <span className="text-4xl font-extrabold">{isYearly ? '$1990' : '$199'}</span>
+            <h3 className="text-xl font-bold mb-2">Ultra</h3>
+            <p className="text-gray-500 text-sm mb-6">{ultraDescription}</p>
+            <div className="mb-4">
+              <span className="text-4xl font-extrabold">{isYearly ? '$239.88' : '$22.99'}</span>
               <span className="text-gray-500">{isYearly ? '/yr' : '/mo'}</span>
             </div>
-            <ul className="space-y-4 mb-10 flex-grow">
-              <li className="flex items-center gap-3 text-sm text-gray-300">
-                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-                Everything in Pro
-              </li>
-              <li className="flex items-center gap-3 text-sm text-gray-300">
-                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-                Team Analytics Dashboard
-              </li>
-              <li className="flex items-center gap-3 text-sm text-gray-300">
-                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-                Dedicated Account Manager
-              </li>
-              <li className="flex items-center gap-3 text-sm text-gray-300">
-                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
-                Custom Branding
-              </li>
-            </ul>
-            <button onClick={handleContactSales} disabled aria-disabled="true" className="w-full py-3 rounded-custom border border-white/20 font-bold hover:bg-white/5 transition-all opacity-50 cursor-not-allowed">Contact Sales</button>
+            <div className="mb-6"></div>
+            {isActive && currentPlan === 'ultra' ? (
+              <div className="mt-auto">
+                <div className="text-center text-primary font-bold mb-2 flex items-center justify-center gap-2 text-sm">
+                  <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                  Current Plan
+                </div>
+              </div>
+            ) : isSignedIn ? (
+              <Link href={`/checkout?planId=cplan_3ArQSH4on7OwqIIQFZ1qgjpbNxB&period=${isYearly ? 'year' : 'month'}`}>
+                <div className="w-full py-3 rounded-custom border border-white/20 text-center cursor-pointer font-bold hover:bg-white/5 transition-all mt-auto">
+                  {currentPlan ? 'Switch to Ultra' : 'Subscribe'}
+                </div>
+              </Link>
+            ) : (
+              <SignInButton mode="modal" fallbackRedirectUrl="/#pricing">
+                <div className="w-full py-3 rounded-custom border border-white/20 text-center cursor-pointer font-bold hover:bg-white/5 transition-all mt-auto">
+                  Sign in to Subscribe
+                </div>
+              </SignInButton>
+            )}
           </div>
         </div>
       </div>

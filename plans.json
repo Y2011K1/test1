@@ -1,0 +1,110 @@
+{
+  "data": [
+    {
+      "object": "commerce_plan",
+      "id": "cplan_3ArPoLt00uDd533lrH9ZenqFy0P",
+      "name": "Free",
+      "fee": {
+        "amount": 0,
+        "amount_formatted": "0.00",
+        "currency": "",
+        "currency_symbol": "$"
+      },
+      "annual_monthly_fee": {
+        "amount": 0,
+        "amount_formatted": "0.00",
+        "currency": "",
+        "currency_symbol": "$"
+      },
+      "annual_fee": {
+        "amount": 0,
+        "amount_formatted": "0.00",
+        "currency": "",
+        "currency_symbol": "$"
+      },
+      "description": null,
+      "product_id": "cprd_3ArPoM4NXX3hyo81ObzRdnDtkbl",
+      "is_default": true,
+      "is_recurring": true,
+      "publicly_visible": true,
+      "has_base_fee": false,
+      "for_payer_type": "user",
+      "slug": "free_user",
+      "avatar_url": null,
+      "features": [],
+      "free_trial_enabled": false,
+      "free_trial_days": null
+    },
+    {
+      "object": "commerce_plan",
+      "id": "cplan_3ArQDgJIKa7sIYWHzzdbO8QBVIX",
+      "name": "Pro",
+      "fee": {
+        "amount": 1899,
+        "amount_formatted": "18.99",
+        "currency": "USD",
+        "currency_symbol": "$"
+      },
+      "annual_monthly_fee": {
+        "amount": 1350,
+        "amount_formatted": "13.50",
+        "currency": "USD",
+        "currency_symbol": "$"
+      },
+      "annual_fee": {
+        "amount": 16200,
+        "amount_formatted": "162.00",
+        "currency": "USD",
+        "currency_symbol": "$"
+      },
+      "description": "",
+      "product_id": "cprd_3ArPoM4NXX3hyo81ObzRdnDtkbl",
+      "is_default": false,
+      "is_recurring": true,
+      "publicly_visible": true,
+      "has_base_fee": true,
+      "for_payer_type": "user",
+      "slug": "pro",
+      "avatar_url": "",
+      "features": [],
+      "free_trial_enabled": true,
+      "free_trial_days": 4
+    },
+    {
+      "object": "commerce_plan",
+      "id": "cplan_3ArQSH4on7OwqIIQFZ1qgjpbNxB",
+      "name": "Ultra",
+      "fee": {
+        "amount": 2299,
+        "amount_formatted": "22.99",
+        "currency": "USD",
+        "currency_symbol": "$"
+      },
+      "annual_monthly_fee": {
+        "amount": 1999,
+        "amount_formatted": "19.99",
+        "currency": "USD",
+        "currency_symbol": "$"
+      },
+      "annual_fee": {
+        "amount": 23988,
+        "amount_formatted": "239.88",
+        "currency": "USD",
+        "currency_symbol": "$"
+      },
+      "description": "",
+      "product_id": "cprd_3ArPoM4NXX3hyo81ObzRdnDtkbl",
+      "is_default": false,
+      "is_recurring": true,
+      "publicly_visible": true,
+      "has_base_fee": true,
+      "for_payer_type": "user",
+      "slug": "ultra",
+      "avatar_url": "",
+      "features": [],
+      "free_trial_enabled": false,
+      "free_trial_days": null
+    }
+  ],
+  "total_count": 3
+}
