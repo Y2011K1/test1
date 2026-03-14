@@ -28,11 +28,6 @@ const nextConfig: NextConfig = {
 
   // Strict mode for better error detection in dev
   reactStrictMode: true,
-
-  // Experimental: faster builds
-  experimental: {
-    optimizeCss: true,
-  },
 };
 
 export default nextConfig;

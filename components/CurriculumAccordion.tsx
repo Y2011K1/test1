@@ -9,7 +9,14 @@ import Link from "next/link";
 interface Lesson {
   _id: string;
   title: string;
-  duration?: string;
+  duration?: string | number;
+  video?: {
+    asset?: {
+      data?: {
+        duration?: number;
+      };
+    };
+  };
 }
 
 interface Module {

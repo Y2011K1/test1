@@ -1,8 +1,11 @@
+import React from "react";
+
 // Reusable skeleton shimmer components for loading states
-export function SkeletonBox({ className = "" }: { className?: string }) {
+export function SkeletonBox({ className = "", style }: { className?: string; style?: React.CSSProperties }) {
   return (
     <div
       className={`bg-white/5 rounded-xl animate-pulse ${className}`}
+      style={style}
       aria-hidden="true"
     />
   );
