@@ -47,7 +47,8 @@ export default function AdminCourses() {
       await deleteCourseAction(course._id);
       setCourses(prev => prev.filter(c => c._id !== course._id));
     } catch (e: any) {
-      alert(e.message || "Delete failed.");
+      console.error("Delete course error:", e);
+      alert(`Delete failed: ${e.message || JSON.stringify(e)}`);
     } finally {
       setDeletingId(null);
     }

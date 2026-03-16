@@ -4,17 +4,18 @@ const isPublicRoute = createRouteMatcher([
   '/',
   '/sign-in(.*)',
   '/sign-up(.*)',
-  '/api(.*)',
   '/terms',
   '/privacy',
   '/about',
   '/courses',
   '/courses/(.*)',
   '/plans',
+  // Public API routes (Sanity webhooks, etc.)
+  '/api/public(.*)',
 ]);
 
 export default clerkMiddleware(async (auth, req) => {
-  // Protect all routes except sign-in and sign-up
+  // Protect all non-public routes including /admin and /studio
   if (!isPublicRoute(req)) {
     await auth.protect();
   }

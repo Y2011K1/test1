@@ -46,9 +46,12 @@ export const lessonType = defineType({
         defineField({
             title: "Video file",
             name: "video",
-            type: "mux.video",
+            type: "file",
+            options: {
+                accept: "video/*"
+            },
             group: ["content", "video"],
-            description: "Upload or select a video for this lesson",
+            description: "Upload a video for this lesson",
         }),
         defineField({
             name: "content",

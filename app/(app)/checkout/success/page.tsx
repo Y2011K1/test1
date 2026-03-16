@@ -6,6 +6,14 @@ import { useSearchParams } from 'next/navigation';
 import { CheckCircle } from 'lucide-react';
 
 export default function CheckoutSuccessPage() {
+  return (
+    <React.Suspense fallback={<div className="pt-32 pb-24 text-center">Loading Success...</div>}>
+      <SuccessContent />
+    </React.Suspense>
+  )
+}
+
+function SuccessContent() {
   const searchParams = useSearchParams();
   const plan = searchParams.get('plan') || 'Pro Plan';
   const period = searchParams.get('period') || 'monthly';

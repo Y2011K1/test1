@@ -1,0 +1,93 @@
+﻿node.exe : 
+At C:\Users\kkhat\AppDa
+ta\Roaming\npm\pnpm.ps1
+:24 char:5
++     & "node$exe"  "$b
+asedir/node_modules/pnp
+m/bin/pnpm.cjs" $args
++     ~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (:String) [],    
+ RemoteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+Oops! Something went 
+wrong! :(
+
+ESLint: 9.39.4
+
+Error: Cannot read 
+config file: C:\Users\k
+khat\Desktop\test1\node
+_modules\.pnpm\eslint-c
+onfig-next@15.2.4_e_780
+98f4825083e3836080a64cf
+beb76e\node_modules\esl
+int-config-next\index.j
+s
+Error: Failed to patch 
+ESLint because the 
+calling module was not 
+recognized.
+If you are using a 
+newer ESLint version 
+that may be 
+unsupported, please 
+create a GitHub issue:
+https://github.com/micr
+osoft/rushstack/issues
+Referenced from: C:\Use
+rs\kkhat\Desktop\test1\
+node_modules\.pnpm\esli
+nt-config-next@15.2.4_e
+_78098f4825083e3836080a
+64cfbeb76e\node_modules
+\eslint-config-next\cor
+e-web-vitals.js
+    at 
+Object.<anonymous> (C:\
+Users\kkhat\Desktop\tes
+t1\node_modules\.pnpm\@
+rushstack+eslint-patch@
+1.16.1\node_modules\@ru
+shstack\eslint-patch\li
+b-commonjs\_patch-base.
+js:244:19)
+    at Module._compile 
+(node:internal/modules/
+cjs/loader:1761:14)
+    at Object..js (node
+:internal/modules/cjs/l
+oader:1893:10)
+    at Module.load (nod
+e:internal/modules/cjs/
+loader:1481:32)
+    at Module._load (no
+de:internal/modules/cjs
+/loader:1300:12)
+    at TracingChannel.t
+raceSync (node:diagnost
+ics_channel:328:14)
+    at wrapModuleLoad (
+node:internal/modules/c
+js/loader:245:24)
+    at Module.require (
+node:internal/modules/c
+js/loader:1504:12)
+    at require (node:in
+ternal/modules/helpers:
+152:16)
+    at 
+Object.<anonymous> (C:\
+Users\kkhat\Desktop\tes
+t1\node_modules\.pnpm\@
+rushstack+eslint-patch@
+1.16.1\node_modules\@ru
+shstack\eslint-patch\li
+b-commonjs\modern-modul
+e-resolution.js:11:23)

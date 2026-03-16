@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
 import { getAllEnrollmentCounts } from "@/lib/enrollmentTracker";
 import { getAllAverageRatings } from "@/lib/ratingTracker";
+import Link from "next/link";
 import { 
   Users, 
   BookOpen, 
@@ -110,9 +111,9 @@ export default function AdminOverview() {
             <div className="glassmorphism rounded-[32px] border border-white/5 overflow-hidden">
                <div className="p-8 border-b border-white/5 flex items-center justify-between">
                   <h2 className="text-xl font-black uppercase tracking-tighter italic">Recent Course Artifacts</h2>
-                  <button className="text-[11px] font-black uppercase tracking-widest text-primary hover:underline flex items-center gap-2">
+                  <Link href="/admin/courses" className="text-[11px] font-black uppercase tracking-widest text-primary hover:underline flex items-center gap-2">
                     View Catalog <ArrowUpRight className="w-4 h-4" />
-                  </button>
+                  </Link>
                </div>
                <div className="p-4 space-y-2">
                   {recentCourses.map((course, i) => (

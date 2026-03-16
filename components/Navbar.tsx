@@ -45,7 +45,7 @@ export default function Navbar() {
             </div>
           ) : (
             <div className="hidden md:flex items-center gap-4">
-              {user?.emailAddresses[0]?.emailAddress === "khatatbehy1@gmail.com" && (
+              {user?.emailAddresses[0]?.emailAddress === process.env.NEXT_PUBLIC_ADMIN_EMAIL && (
                 <Link href="/admin" className="text-[10px] font-black uppercase tracking-widest bg-primary/10 text-primary border border-primary/20 px-3 py-1.5 rounded-lg hover:bg-primary hover:text-white transition-all">
                   Admin Portal
                 </Link>
@@ -114,7 +114,7 @@ export default function Navbar() {
               <Link href="/billing" className="w-full block text-center border border-white/20 text-white text-sm font-bold px-6 py-2 rounded transition-all" onClick={() => setIsMenuOpen(false)}>
                 Billing
               </Link>
-              {user?.emailAddresses[0]?.emailAddress === "khatatbehy1@gmail.com" && (
+              {user?.emailAddresses[0]?.emailAddress === process.env.NEXT_PUBLIC_ADMIN_EMAIL && (
                 <Link href="/admin" className="w-full block text-center bg-primary/10 text-primary border border-primary/20 text-sm font-bold px-6 py-2 rounded transition-all" onClick={() => setIsMenuOpen(false)}>
                   Admin Portal
                 </Link>

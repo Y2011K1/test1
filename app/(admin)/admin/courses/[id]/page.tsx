@@ -20,6 +20,8 @@ type Lesson = { _id: string; title: string; description?: string; video?: any };
 type Module = { _id: string; title: string; description?: string; lessons: Lesson[] };
 type Course = { _id: string; title: string; description?: string; category?: { title: string }; modules: Module[] };
 
+export const maxDuration = 300; // 5 minutes for video uploads
+
 export default function ManageCourseView({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const [course, setCourse] = useState<Course | null>(null);
@@ -71,7 +73,10 @@ export default function ManageCourseView({ params }: { params: Promise<{ id: str
       setModuleTitle("");
       setAddingModule(false);
       await fetchData();
-    } catch (e: any) { alert(e.message || "Failed to add module."); }
+    } catch (e: any) { 
+      console.error("Add Module Error:", e);
+      alert(`Failed to add module: ${e.message || JSON.stringify(e)}`); 
+    }
     finally { setModuleLoading(false); }
   };
 
@@ -81,7 +86,10 @@ export default function ManageCourseView({ params }: { params: Promise<{ id: str
     try {
       await deleteModuleAction(id, moduleId);
       await fetchData();
-    } catch (e: any) { alert(e.message || "Failed to delete module."); }
+    } catch (e: any) { 
+      console.error("Delete Module Error:", e);
+      alert(`Failed to delete module: ${e.message || JSON.stringify(e)}`); 
+    }
     finally { setDeletingModule(null); }
   };
 
@@ -95,7 +103,10 @@ export default function ManageCourseView({ params }: { params: Promise<{ id: str
       setLessonInputs(prev => ({ ...prev, [moduleId]: "" }));
       setAddingLessonTo(null);
       await fetchData();
-    } catch (e: any) { alert(e.message || "Failed to add lesson."); }
+    } catch (e: any) { 
+      console.error("Add Lesson Error:", e);
+      alert(`Failed to add lesson: ${e.message || JSON.stringify(e)}`); 
+    }
     finally { setLessonLoading(null); }
   };
 
@@ -105,7 +116,10 @@ export default function ManageCourseView({ params }: { params: Promise<{ id: str
     try {
       await deleteLessonAction(id, moduleId, lessonId);
       await fetchData();
-    } catch (e: any) { alert(e.message || "Failed to delete lesson."); }
+    } catch (e: any) { 
+      console.error("Delete Lesson Error:", e);
+      alert(`Failed to delete lesson: ${e.message || JSON.stringify(e)}`); 
+    }
     finally { setDeletingLesson(null); }
   };
 
@@ -134,7 +148,7 @@ export default function ManageCourseView({ params }: { params: Promise<{ id: str
       const res = await uploadVideoAction(fd);
       if (res.success) {
         await updateFieldAction(lessonId, "video", {
-          _type: "mux.video",
+          _type: "file",
           asset: { _type: "reference", _ref: res.assetId }
         });
         await fetchData();

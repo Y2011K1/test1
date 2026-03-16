@@ -5,11 +5,12 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Loader2, ShieldAlert } from "lucide-react";
 
-const ADMIN_EMAIL = "khatatbehy1@gmail.com";
+const ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
 
 /**
  * Higher-Order Component/Guard to protect admin routes.
- * Strictly limits access to the user 'khatatbehy1@gmail.com'.
+ * Server-side protection is handled by Clerk middleware.
+ * This component adds an additional client-side email check.
  */
 export default function AdminGuard({ children }: { children: React.ReactNode }) {
   const { user, isLoaded } = useUser();
@@ -19,7 +20,7 @@ export default function AdminGuard({ children }: { children: React.ReactNode }) 
   useEffect(() => {
     if (isLoaded) {
       const email = user?.emailAddresses[0]?.emailAddress;
-      if (email === ADMIN_EMAIL) {
+      if (email && ADMIN_EMAIL && email === ADMIN_EMAIL) {
         setAuthorized(true);
       } else {
         // Redirect non-admins to home
@@ -44,7 +45,7 @@ export default function AdminGuard({ children }: { children: React.ReactNode }) 
           <ShieldAlert className="w-16 h-16 text-red-500 mx-auto mb-6" />
           <h1 className="text-3xl font-black mb-4">Access Denied</h1>
           <p className="text-gray-400 mb-8">This portal is strictly reserved for the lead administrator.</p>
-          <button 
+          <button
             onClick={() => router.push("/")}
             className="w-full bg-primary py-4 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-blue-600 transition-all"
           >

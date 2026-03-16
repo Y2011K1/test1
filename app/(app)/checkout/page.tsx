@@ -1,12 +1,21 @@
 'use client'
 import * as React from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { Show, ClerkLoaded, useUser } from '@clerk/nextjs'
+import { ClerkLoaded, useUser } from '@clerk/nextjs'
 
 export default function CheckoutPage() {
+  return (
+    <React.Suspense fallback={<div className="pt-32 pb-24 text-center">Loading Checkout...</div>}>
+      <CheckoutContent />
+    </React.Suspense>
+  )
+}
+
+function CheckoutContent() {
   const searchParams = useSearchParams()
   const planId = searchParams.get('planId')
   const period = searchParams.get('period') || 'monthly'
+  const { isLoaded, isSignedIn } = useUser()
 
   if (!planId) {
     return (
@@ -23,14 +32,14 @@ export default function CheckoutPage() {
       
       <div className="glassmorphism p-8 rounded-custom shadow-neon-blue border border-white/10">
         <ClerkLoaded>
-          <Show when="signed-in">
+          {isLoaded && isSignedIn && (
             <FakeCheckoutForm planId={planId} period={period} />
-          </Show>
-          <Show when="signed-out">
+          )}
+          {isLoaded && !isSignedIn && (
             <div className="text-center py-8">
               <p className="text-gray-400 mb-4">You must be signed in to checkout.</p>
             </div>
-          </Show>
+          )}
         </ClerkLoaded>
       </div>
     </div>
